@@ -8,7 +8,7 @@ import axios from "axios";
 function App() {
 
     const[data,setData] = useState([]);
-
+    const [day, setDay] = useState([]);
     const [location, setLocation] = useState('');
     // const [lat, setLat] = useState([]);
     // const [long, setLong] = useState([]);
@@ -19,8 +19,11 @@ function App() {
             const getResponse = async () => {
                 try {
                     await axios.get(url).then((response) => {
-                        // console.log(response.data.list);
-                        setData([response.data.list]);
+                        console.log(response.data.list.map(it=>it.main.temp_min));
+                        console.log(response.data);
+                        setData(response.data.list.map(it=>it.main.temp_min));
+                        setDay(response.data.list.map(it=>it.dt_txt));
+                        console.log(response.data.list.map(it=>it.dt_txt));
 
                     });
 
@@ -58,6 +61,10 @@ function App() {
                     type="text"/>
             </div>
 
+            <div className={"cards"}>
+                <div className={"temps"}>{data.map(item => <div className={"temp"}>{item}</div>)}</div>
+                <div className={"days"}>{day.map(item => <div className={"day"}>{item}</div>)}</div>
+            </div>
 
 
 
