@@ -8,8 +8,8 @@ import axios from "axios";
 
 function App() {
 
-    const [data, setData] = useState({})
-    const [location, setLocation] = useState('')
+    const [data, setData] = useState({});
+    const [location, setLocation] = useState('');
     // const [lat, setLat] = useState([]);
     // const [long, setLong] = useState([]);
     const url = `http://api.openweathermap.org/data/2.5/forecast/daily?q=${location}&cnt=5&appid=f3a0cc4d285545966101dd973fc259a8`
@@ -19,11 +19,11 @@ function App() {
             const getResponse = async () => {
                 try {
                     await axios.get(url).then((response) => {
-                        console.log(response)
+                        console.log(response);
                     });
 
                 } catch(err) {
-                    console.log('err')
+                    console.log('err');
                 }
             }
              getResponse()
