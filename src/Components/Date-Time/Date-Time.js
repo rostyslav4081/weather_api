@@ -9,7 +9,7 @@ function DateTime() {
 
     // console.log( getBrowserLocale() );
     useEffect(() => {
-        setInterval(() => setDateState(new Date()), 30000);
+        setInterval(() => setDateState(new Date()), 1000);
     }, []);
     return (
         <div className="DataTime">
